@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, SafeAreaView, Pressable, TextInput, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Image, Pressable, TextInput, ScrollView, TouchableHighlight } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { SafeAreaView } from 'react-native-safe-area-context';
+import Header from '../components/Header'
+import NavBar from '../components/NavBar'
 
 const introRecipe = require('../imgs/start_recipe.png');
 const popular = require('../imgs/popular.jpg')
@@ -15,54 +18,20 @@ const browse = require('../imgs/browse.png')
 
 
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
     return (
-        // <SafeAreaView>
-        //     <ScrollView> 
-        //         {/* <View>
-        //             <Text style={{
-        //                 fontSize: 50,
-        //                 color: '#4147D5',
-        //                 fontWeight: '500'
-        //             }}>
-        //                 Recipeace
-        //             </Text>
-        //         </View>
-        //         <View style={styles.notification}>
-        //             <Text style={{fontSize: 20}}>
-        //                Hi Friend,{'\n'} What are we having today?
-        //             </Text>
-        //             <MaterialCommunityIcons name="bell-badge-outline" size={40} color="black" />
-        //        </View> */}
-        //        <Image 
-        //             style={{
-        //                 // width: '50%', height: '50%', resizeMode: 'contain',
-        //                 marginHorizontal: 10,
-        //             }}
-        //             source={popular}
-        //         />
-        //     </ScrollView>
-        // </SafeAreaView>
         <SafeAreaView style={styles.container}>
-            <ScrollView
-                contentContainerStyle={{ marginHorizontal: 10, alignItems: 'center'}}
-            >
+            <ScrollView>
                 <View style={styles.title}>
-                    <Text style={{
-                        fontSize: 50,
-                        color: '#4147D5',
-                        fontWeight: '500',
-                    }}>
-                        Recipeace
-                    </Text>
+                    <Header />
                 </View>
                 <View style={styles.notification}>
-                    <Text style={{fontSize: 20}}>
+                    <Text style={{ fontSize: 20, fontWeight: '700' }}>
                         Hi Friend,{'\n'}What are we having today?
                     </Text>
                     <MaterialCommunityIcons name="bell-badge-outline" size={40} color="black" />
                 </View>
-                <View style={{ padding: 10}}>
+                <View style={{ padding: 10, alignItems: 'center'}}>
                     <Image 
                         style={styles.card}
                         source={introRecipe}
@@ -74,65 +43,43 @@ const HomeScreen = () => {
                         placeholder='Search Recipes or ingredients...'
                     />
                 </View>
-                <View style={styles.options}>
-                    <Text>
+                <Text style={{ fontSize: 22, fontWeight: '500', marginHorizontal: 20 }}>
                         Let's get cookin'!
-                    </Text>
-                    <Image 
-                        style={styles.card}
-                        source={popular}
-                    />
-                    <Text>
+                </Text>
+                <View style={styles.options}>
+                    <View style={styles.cardBox}>
+                        <Image 
+                            style={styles.card}
+                            source={popular}
+                        />
+                    </View>
+                    
+                    <Text style={styles.optionsText}>
                         Popular
                     </Text>
-                    <Image 
-                        style={styles.card}
-                        source={recent}
-                    />
-                    <Text>
+                    <View style={styles.cardBox}>
+                        <Image 
+                            style={styles.card}
+                            source={recent}
+                        />
+                    </View>
+                    <Text style={styles.optionsText}>
                         Recently Added
                     </Text>
-                    <Image 
-                        style={styles.card}
-                        source={browse}
-                    /> 
-                    <Text>
+                    <View style={styles.cardBox}>
+                        <TouchableHighlight onPress={() => navigation.navigate('Browse')} style={{ borderRadius: 30}}>
+                            <Image 
+                                style={styles.card}
+                                source={browse}
+                            />
+                        </TouchableHighlight>
+                    </View>
+                    <Text style={styles.optionsText} >
                         Browse Cuisines
                     </Text>
                 </View>
             </ScrollView>
-            <View style={styles.menu}>
-                <View>
-                    <Image 
-                    style={styles.icons}
-                    source={add}/>
-                    <Text>Quick add</Text>
-                </View>
-                <View>
-                    <Image 
-                    style={styles.icons}
-                    source={list}/>
-                    <Text>Shopping List</Text>
-                </View>
-                <View>
-                    <Image 
-                    style={styles.icons}
-                    source={features}/>
-                    <Text>Features</Text>
-                </View>
-                <View>
-                    <Image 
-                    style={styles.icons}
-                    source={bookmark}/>
-                    <Text>Bookmarked</Text>
-                </View>
-                <View>
-                    <Image 
-                    style={styles.icons}
-                    source={profile}/>
-                    <Text>My Profile</Text>
-                </View>
-            </View>
+            <NavBar />
         </SafeAreaView>
     )
 }
@@ -141,21 +88,19 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: '#EAEBF6',
-      marginTop: 40
+    //   marginTop: 40
     },
     title: {
       flex: 0.3,
       justifyContent: "center",
-      alignItems: "center",
-      padding: 10
-      
+      alignItems: "center",  
     },
     notification: {
         // flex:0.2,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        padding: 10
-
+        padding: 10,
+        marginHorizontal: 10
     },
     searchBar: {
         padding: 10,
@@ -167,26 +112,30 @@ const styles = StyleSheet.create({
     options: {
         // flex: 2,
         alignItems: 'center',
-        padding: 10
-        
+        padding: 10,
+    },
+    cardBox: {
+        // backgroundColor: 'white',
+        // shadowColor: 'black',
+        // shadowOffset: {width: -2, height: 4},
+        // shadowOpacity: 0.5,
+        // shadowRadius: 3,
+        elevation: 10,
+        borderRadius: 30
     },
     card: {
         borderRadius: 30,
-        
-    },
-    menu: {
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        width: '100%',
-        height: '8%',
-        marginBottom: 5,
-        paddingTop: 10
-    },
-    icons: {
-        flex: 0.7,
-        width: null,
-        height: null,
+        width: 325,
         resizeMode: 'contain'
+        // margin: 10,
+    },
+    optionsText: {
+        fontWeight: '500',
+        fontSize: 20,
+        margin: 10,
+        textShadowColor: 'rgba(0, 0, 0, 0.3)',
+        textShadowOffset: { width: 1, height: 2 },
+        textShadowRadius: 10,
     }
 });
 

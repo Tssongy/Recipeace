@@ -1,26 +1,22 @@
 import * as React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, SafeAreaView, Pressable } from 'react-native';
+import Header from '../components/Header'
+
 const image = require('../imgs/home_screen.png');
 
 const WelcomeScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.title}>
-                <Text style={{
-                    fontSize: 50,
-                    color: '#4147D5',
-                    fontWeight: '500'
-                }}>
-                    Recipeace
-                </Text>
+                <Header />
             </View>
             <View style={styles.image}>
                 <Image 
                     style={{
                     width: '100%', height: '100%', resizeMode: 'contain'
                     }}
-                    source={image}
+                    source={require('../imgs/home_screen.png')}
                 />
             </View>
             <View style={styles.desc}>
@@ -33,10 +29,6 @@ const WelcomeScreen = ({ navigation }) => {
             </View>
 
             <View style={styles.button}>
-            {/* <Button 
-                title="Join us today"
-                color="#D7E0FF"
-            /> */}
                 <Pressable style={{
                     alignItems: 'center',
                     justifyContent: 'center',
