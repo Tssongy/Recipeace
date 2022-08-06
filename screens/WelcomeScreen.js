@@ -40,7 +40,7 @@ const WelcomeScreen = ({ navigation }) => {
                     width: '80%'
                 }}
                     onPress={() => 
-                        navigation.navigate('Home')
+                        navigation.navigate('Login')
                     }
                 >
                     <Text style={{
