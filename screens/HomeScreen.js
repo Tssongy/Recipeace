@@ -16,8 +16,6 @@ const profile = require('../imgs/profile.png')
 const recent = require('../imgs/recent.png')
 const browse = require('../imgs/browse.png')
 
-
-
 const HomeScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
@@ -126,7 +124,7 @@ const styles = StyleSheet.create({
     card: {
         borderRadius: 30,
         width: 325,
-        resizeMode: 'contain'
+        // resizeMode: 'contain',
         // margin: 10,
     },
     optionsText: {
