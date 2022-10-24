@@ -7,6 +7,8 @@ import HomeScreen from './screens/HomeScreen';
 import BrowseScreen from './screens/BrowseScreen';
 import LoginScreen from './screens/LoginScreen';
 import SignUpScreen from './screens/SignUpScreen';
+import RecipeSelectionScreen from './screens/RecipeSelectionScreen';
+import RecipeScreen from './screens/RecipeScreen';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -45,6 +47,20 @@ export default function App() {
         <Stack.Screen 
           name="SignUp" 
           component={SignUpScreen} 
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen 
+          name="Recipe Selection" 
+          component={RecipeSelectionScreen} 
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen 
+          name="Recipe Screen" 
+          component={RecipeScreen} 
           options={{
             headerShown: false,
           }}

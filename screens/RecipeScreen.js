@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, Pressable, TextInput, ScrollView, TouchableHighlight } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { AntDesign } from '@expo/vector-icons'; 
 import Header from '../components/Header'
 import NavBar from '../components/NavBar'
 
@@ -16,65 +17,22 @@ const profile = require('../imgs/profile.png')
 const recent = require('../imgs/recent.png')
 const browse = require('../imgs/browse.png')
 
-const HomeScreen = ({ navigation }) => {
+const RecipeScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
-            <ScrollView>
+            <ScrollView style={{ marginHorizontal: 20 }}>
                 <View style={styles.title}>
                     <Header />
                 </View>
-                <View style={styles.notification}>
-                    <Text style={{ fontSize: 20, fontWeight: '700' }}>
-                        Hi Friend,{'\n'}What are we having today?
-                    </Text>
-                    <MaterialCommunityIcons name="bell-badge-outline" size={40} color="black" />
-                </View>
-                <View style={{ padding: 10, alignItems: 'center'}}>
-                    <Image 
-                        style={styles.card}
-                        source={introRecipe}
-                    />
-                </View>
-                <View style={{ padding: 10}}>
-                    <TextInput 
-                        style={styles.searchBar}
-                        placeholder='Search Recipes or ingredients...'
-                    />
-                </View>
-                <Text style={{ fontSize: 22, fontWeight: '500', marginHorizontal: 20 }}>
-                        Let's get cookin'!
-                </Text>
-                <View style={styles.options}>
-                    <View style={styles.cardBox}>
-                        <Image 
-                            style={styles.card}
-                            source={popular}
-                        />
+                <View style={styles.filter}>
+                    <TouchableHighlight onPress={() => navigation.goBack()}>
+                        <AntDesign name="left" size={30} color="#4147D5" />
+                    </TouchableHighlight> 
+
+                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 18, color: "#4147D5" }}>Filter by</Text>
+                        <AntDesign name="down" size={24} color="#4147D5" />
                     </View>
-                    
-                    <Text style={styles.optionsText}>
-                        Popular
-                    </Text>
-                    <View style={styles.cardBox}>
-                        <Image 
-                            style={styles.card}
-                            source={recent}
-                        />
-                    </View>
-                    <Text style={styles.optionsText}>
-                        Recently Added
-                    </Text>
-                    <View style={styles.cardBox}>
-                        <TouchableHighlight onPress={() => navigation.navigate('Browse')} style={{ borderRadius: 30 }}>
-                            <Image 
-                                style={styles.card}
-                                source={browse}
-                            />
-                        </TouchableHighlight>
-                    </View>
-                    <Text style={styles.optionsText} >
-                        Browse Cuisines
-                    </Text>
                 </View>
             </ScrollView>
             <NavBar />
@@ -134,7 +92,12 @@ const styles = StyleSheet.create({
         textShadowColor: 'rgba(0, 0, 0, 0.3)',
         textShadowOffset: { width: 1, height: 2 },
         textShadowRadius: 10,
-    }
+    },
+    filter: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
 });
 
-export default HomeScreen
+export default RecipeScreen
