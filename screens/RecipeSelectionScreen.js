@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
         
     },
     descText: {
-        fontSize: 20,
+        fontSize: 15,
         fontWeight: '500',
         textShadowColor: 'rgba(0, 0, 0, 0.3)',
         textShadowOffset: { width: 1, height: 2 },

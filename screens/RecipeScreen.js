@@ -28,17 +28,20 @@ const RecipeScreen = ({ navigation }) => {
                     <TouchableHighlight onPress={() => navigation.goBack()}>
                         <AntDesign name="left" size={30} color="#4147D5" />
                     </TouchableHighlight> 
-
-                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                    <Text style={styles.subHeading}>Korean Beef Kimbap</Text>
+                    {/* <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                         <Text style={{ fontSize: 18, color: "#4147D5" }}>Filter by</Text>
                         <AntDesign name="down" size={24} color="#4147D5" />
-                    </View>
+                    </View> */}
                 </View>
                 <View style={styles.cardBox}>
                     <Image
                         style={styles.card}
                         source={require('../imgs/popular.jpg')}
                     />
+                </View>
+                <View style={{ backgroundColor: 'red' }}>
+                    <Text>Hello</Text>
                 </View>
             </ScrollView>
             <NavBar />
@@ -58,12 +61,10 @@ const styles = StyleSheet.create({
       alignItems: "center",  
     //   marginHorizontal: 20
     },
-    notification: {
+    subHeading: {
         // flex:0.2,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        padding: 10,
-        marginHorizontal: 10
+        marginHorizontal: 45,
+        fontSize: 25
     },
     cardBox: {
         width: '100%',
@@ -87,7 +88,7 @@ const styles = StyleSheet.create({
     },
     filter: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        // justifyContent: 'space-between',
         alignItems: 'center',
         marginHorizontal: 20
     },
