@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableNativeFeedback } from 'react-native';
 
 
 const add = require('../imgs/add.png')
@@ -11,12 +11,17 @@ const profile = require('../imgs/profile.png')
 const NavBar = () => {
     return (
         <View style={styles.menu}>
-            <View>
-                <Image 
-                style={styles.icons}
-                source={add}/>
-                <Text>Quick add</Text>
+            <View style={{borderRadius: 10}}>
+            <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple('#000000', true)}>
+                <View style={{alignItems: 'center'}}>
+                    <Image 
+                    // style={styles.icons}
+                    source={add}/>
+                    <Text>Quick add</Text>
+                </View>
+            </TouchableNativeFeedback>
             </View>
+            
             <View>
                 <Image 
                 style={styles.icons}
