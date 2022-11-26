@@ -11,40 +11,56 @@ const profile = require('../imgs/profile.png')
 const NavBar = () => {
     return (
         <View style={styles.menu}>
-            <View style={{borderRadius: 10}}>
-            <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple('#000000', true)}>
-                <View style={{alignItems: 'center'}}>
-                    <Image 
-                    // style={styles.icons}
-                    source={add}/>
-                    <Text>Quick add</Text>
-                </View>
-            </TouchableNativeFeedback>
+            <View style={{borderRadius: 20, flex: 1}}>
+                <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple('#000000', true)}>
+                    <View style={{alignItems: 'center',}}>
+                        <Image
+                        style={styles.icon} 
+                        source={add}/>
+                        <Text style={styles.text}>Quick add</Text>
+                    </View>
+                </TouchableNativeFeedback>
             </View>
             
-            <View>
-                <Image 
-                style={styles.icons}
-                source={list}/>
-                <Text>Shopping List</Text>
+            <View style={{borderRadius: 20, flex: 1, marginLeft: 20}}>
+                <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple('#000000', true)}>
+                    <View style={{alignItems: 'center'}}>
+                        <Image 
+                        style={styles.icon} 
+                        source={list}/>
+                        <Text style={styles.text}>List</Text>
+                    </View>
+                </TouchableNativeFeedback>
             </View>
-            <View>
-                <Image 
-                style={styles.icons}
-                source={features}/>
-                <Text>Features</Text>
+            <View style={{borderRadius: 20, flex: 1, marginLeft: 20}}>
+                <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple('#000000', true)}>
+                    <View style={{alignItems: 'center'}}>
+                        <Image 
+                        style={styles.icon} 
+                        source={features}/>
+                        <Text style={styles.text}>Features</Text>
+                    </View>
+                </TouchableNativeFeedback>
             </View>
-            <View>
-                <Image 
-                style={styles.icons}
-                source={bookmark}/>
-                <Text>Bookmarked</Text>
+            <View style={{borderRadius: 20, flex: 1, marginLeft: 20}}>
+                <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple('#000000', true)}>
+                    <View style={{alignItems: 'center'}}>
+                        <Image 
+                        style={styles.icon} 
+                        source={bookmark}/>
+                        <Text style={styles.text}>Bookmark</Text>
+                    </View>
+                </TouchableNativeFeedback>
             </View>
-            <View>
-                <Image 
-                style={styles.icons}
-                source={profile}/>
-                <Text>My Profile</Text>
+            <View style={{borderRadius: 20, flex: 1, marginLeft: 20,}}>
+                <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple('#000000', true)}>
+                    <View style={{alignItems: 'center'}}>
+                        <Image 
+                        style={styles.icon} 
+                        source={profile}/>
+                        <Text style={styles.text}>My Profile</Text>
+                    </View>
+                </TouchableNativeFeedback>
             </View>
         </View>
     )
@@ -54,16 +70,19 @@ const styles = StyleSheet.create({
     menu: {
         flexDirection: 'row',
         justifyContent: 'space-evenly',
-        width: '100%',
+        width: '90%',
         height: '8%',
-        marginBottom: 5,
+        marginBottom: 0,
         paddingTop: 10,
+        marginHorizontal: 20,
     },
-    icons: {
-        flex: 0.7,
-        width: null,
-        height: null,
+    icon: {
+        width: 30,
+        height: 30,
         resizeMode: 'contain'
+    },
+    text: {
+        fontSize: 10
     }
 });
 
