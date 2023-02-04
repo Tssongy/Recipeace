@@ -1,15 +1,11 @@
 import * as React from 'react';
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ImageBackground, ScrollView, ImageBackgroundBase, Image, Pressable, TextInput } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { AntDesign } from '@expo/vector-icons'; 
 import Header from '../components/Header'
-
-const signupBg = require('../imgs/signup_bg.png')
-
+import { authService } from '../fbase';
 
 const SignUpScreen = ({ navigation }) => {
+    const signupBg = require('../imgs/signup_bg.png')
     return (
         <SafeAreaView style={styles.container}>
             <ImageBackground source={signupBg} resizeMode="contain" style={styles.backgroundContainer}>
@@ -21,7 +17,7 @@ const SignUpScreen = ({ navigation }) => {
                         <Text style={{ fontSize: 30, fontWeight: '500', marginBottom: 30}}>
                             Welcome!
                         </Text>
-                    </View>
+                    </View> 
                     <TextInput 
                         placeholder='Your Name'
                         style={styles.inputBar}

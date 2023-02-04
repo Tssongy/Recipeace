@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, Pressable, TextInput, ScrollView, TouchableHighlight } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { getAuth, signOut } from "firebase/auth";
 import Header from '../components/Header'
 import NavBar from '../components/NavBar'
 
@@ -17,6 +18,12 @@ const recent = require('../imgs/recent.png')
 const browse = require('../imgs/browse.png')
 
 const HomeScreen = ({ navigation }) => {
+    const auth = getAuth();
+
+    const handleSignOut = () => {
+        signOut(auth);
+        navigation.navigate('Welcome');
+    }
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView>
@@ -27,7 +34,12 @@ const HomeScreen = ({ navigation }) => {
                     <Text style={{ fontSize: 20, fontWeight: '700' }}>
                         Hi Friend,{'\n'}What are we having today?
                     </Text>
-                    <MaterialCommunityIcons name="bell-badge-outline" size={40} color="black" />
+                    <MaterialCommunityIcons 
+                        name="bell-badge-outline" 
+                        size={40} 
+                        color="black" 
+                        onPress={handleSignOut}
+                    />
                 </View>
                 <View style={{ padding: 10, alignItems: 'center'}}>
                     <Image 
